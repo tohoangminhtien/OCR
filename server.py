@@ -28,7 +28,7 @@ def _group_items_by_material_code(items: list) -> list:
     for item in items:
         code = str(item.get("Mã vật tư", "")).strip()
         qty = _to_number(item.get("Số lượng"))
-        if not code or qty is None:
+        if not code or code == "-" or qty is None:
             result.append(item)
             continue
         key = (code, str(item.get("Đơn vị tính", "")).strip())
